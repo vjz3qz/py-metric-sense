@@ -12,3 +12,8 @@ class ArgumentHandler:
                 return user_input
             else:
                 print("Invalid choice. Please try again.")
+
+    @staticmethod
+    def get_sheet_name():
+        sheet_name = input("Enter the name of the sheet to read from: ")
+        return sheet_name
