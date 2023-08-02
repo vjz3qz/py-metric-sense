@@ -47,6 +47,12 @@ def select_file(message):
     file_path = filedialog.askopenfilename(title=message)  # Open the file dialog and get the selected file path
     return file_path
 
+
+def option_1(first_df, second_df):
+    first_df.filter_apps_with_restricted_ppi_or_cash_payment_systems()
+    second_df.filter_apps_with_restricted_ppi_or_cash_payment_systems()
+
+
 def get_filter_type():
     print("Please select a filter type:")
     print("1. Restricted")
@@ -54,12 +60,15 @@ def get_filter_type():
     print("3. NFR")
     print("4. All")
     options = {
-        '1': 'Restricted PPI',
+        '1': lambda: option_1(first_month_data, second_month_data),
+        '2': lambda: option_1(first_month_data, second_month_data),
+        '3': lambda: option_1(first_month_data, second_month_data),
+        '4': lambda: option_1(first_month_data, second_month_data)
     }
     while True:
         user_input = input("Enter your choice (1-4): ")
-        if user_input in ['1', '2', '3', '4']:
-            return user_input
+        if user_input in options:
+            return options[user_input]
         else:
             print("Invalid choice. Please try again.")
 
@@ -90,8 +99,7 @@ if __name__ == '__main__':
     filter_type = get_filter_type()
 
     # Filter the data
-    first_month_data.filter_apps_with_restricted_ppi_or_cash_payment_systems()
-    second_month_data.filter_apps_with_restricted_ppi_or_cash_payment_systems()
+    filter_type()
 
     # Write the filtered data to an Excel file
     filtered_data_file_path = os.path.join(current_dir, 'filtered_data.xlsx')
