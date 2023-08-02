@@ -1,11 +1,11 @@
 import pandas as pd
 import os
-import tableauserverclient as tsc
 import tkinter as tk
 from tkinter import filedialog
 
 from utils.data_filterer import DataFilterer
 from utils.data_comparator import DataComparator
+#from utils.tableau_publisher import TableauPublisher
 
 
 def read_excel_file(file_path, sheet_name):
@@ -25,19 +25,6 @@ def write_to_excel_file(df, file_path):
         df.to_excel(file_path, index=False)
     except Exception as e:
         print(f"Error: An unexpected error occurred while writing to the file {file_path}. {str(e)}")
-
-
-def publish_to_tableau_server(file_path, project_id, data_source_name):
-    try:
-        tableau_auth = tsc.TableauAuth('USERNAME', 'PASSWORD', 'SITE_ID')
-        server = tsc.Server('http://SERVER_URL')
-
-        with server.auth.sign_in(tableau_auth):
-            new_datasource = tsc.DatasourceItem(project_id, name=data_source_name)
-            new_datasource = server.datasources.publish(new_datasource, file_path, 'Overwrite')
-            print(f'Successfully published datasource {data_source_name} to Tableau Server.')
-    except Exception as e:
-        print(f"Error: An unexpected error occurred while publishing to Tableau Server. {str(e)}")
 
 
 # Create a function to open a file dialog and return the selected file path
