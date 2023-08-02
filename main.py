@@ -7,26 +7,6 @@ from utils.file_editor import FileEditor
 # from utils.tableau_publisher import TableauPublisher
 
 
-def get_filter_type():
-    print("Please select a filter type:")
-    print("1. Restricted")
-    print("2. Cash Payment")
-    print("3. NFR")
-    print("4. All")
-    options = {
-        1: DataFilterer.filter_apps_with_restricted_ppi_or_cash_payment_systems,
-        2: DataFilterer.filter_apps_with_restricted_ppi_or_cash_payment_systems,
-        3: DataFilterer.filter_apps_with_restricted_ppi_or_cash_payment_systems,
-        4: DataFilterer.filter_apps_with_restricted_ppi_or_cash_payment_systems
-    }
-    while True:
-        user_input = int(input("Enter your choice (1-4): "))
-        if user_input in options:
-            return options[user_input]
-        else:
-            print("Invalid choice. Please try again.")
-
-
 if __name__ == '__main__':
 
     # Get the file paths
