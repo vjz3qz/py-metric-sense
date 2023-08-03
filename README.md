@@ -81,3 +81,11 @@ When executed, Py_Metric_Sense will prompt you to select 2 Excel files from your
                         changes[ci_id][field] = (prev_value, curr_value)
 
         return changes
+
+
+changes = DataComparator.compare_fields(fields_to_compare)
+
+for ci_id, ci_changes in changes.items():
+    print(f"For CI_ID: {ci_id}")
+    for field, (prev_value, curr_value) in ci_changes.items():
+        print(f"  - The value of '{field}' changed from '{prev_value}' to '{curr_value}'")
