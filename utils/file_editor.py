@@ -26,7 +26,8 @@ class FileEditor:
     @staticmethod
     def write_to_excel_file(df, file_name):
         current_dir = os.path.dirname(os.path.realpath(__file__))
-        filtered_data_file_path = os.path.join(current_dir, file_name)
+        parent_dir = os.path.dirname(current_dir)
+        filtered_data_file_path = os.path.join(parent_dir, file_name)
 
         try:
             df.to_excel(filtered_data_file_path, index=False)

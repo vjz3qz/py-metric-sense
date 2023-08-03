@@ -33,7 +33,8 @@ def main():
     second_month_data.apply_filter(filter_option)
 
     # Write the filtered data to an Excel file
-    FileEditor.write_to_excel_file(second_month_data.data_frame, 'filtered_data.xlsx')
+    FileEditor.write_to_excel_file(first_month_data.get_data_frame(), 'first_month_data.xlsx')
+    FileEditor.write_to_excel_file(second_month_data.get_data_frame(), 'second_month_data.xlsx')
 
     fields_to_compare = ['NFR_10', 'Deployment_Lifecycle_Phase', 'Asset_Type', 'PPI_Classification',
                          'Information_Classification', 'Cash_Payment_Systems']

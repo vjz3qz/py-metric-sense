@@ -94,3 +94,6 @@ class DataFilterer:
             self.filter_methods[filter_option]
         except Exception as e:
             raise Exception(f"Failed to apply filter: {str(e)}")
+
+    def get_data_frame(self):
+        return self.data_frame
