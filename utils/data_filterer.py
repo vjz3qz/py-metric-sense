@@ -48,7 +48,7 @@ class DataFilterer:
 
     def restricted_ppi_or_cash_payment_system(self):
         return ((self.data_frame['PPI_Classification'] == 'Restricted PPI') |
-                (self.data_frame['Cash_Payment_systems'] == 'Yes'))
+                (self.data_frame['Cash_Payment_Systems'] == 'Yes'))
 
     def app_or_platform_or_tool(self):
         return ((self.data_frame['Asset_Type'] == 'Application') |

@@ -6,7 +6,7 @@ from utils.file_editor import FileEditor
 # from utils.tableau_publisher import TableauPublisher
 
 
-if __name__ == '__main__':
+def main():
     print("Welcome to Py_Metric_Sense!")
     # Get the file paths
     first_month_file_path = ArgumentHandler.select_file("Select the Excel file for the first month")
@@ -41,3 +41,7 @@ if __name__ == '__main__':
 
     # Publish the filtered data to Tableau Server
     # publish_to_tableau_server(filtered_data_file_path, 'PROJECT_ID', 'FilteredData')
+
+
+if __name__ == '__main__':
+    main()
