@@ -3,12 +3,11 @@ from utils.data_filterer import DataFilterer
 from utils.data_comparator import DataComparator
 from utils.file_editor import FileEditor
 
-
 # from utils.tableau_publisher import TableauPublisher
 
 
 if __name__ == '__main__':
-    print("Welcome to the Py_Metric_Sense!")
+    print("Welcome to Py_Metric_Sense!")
     # Get the file paths
     first_month_file_path = ArgumentHandler.select_file("Select the Excel file for the first month")
     second_month_file_path = ArgumentHandler.select_file("Select the Excel file for the second month")
@@ -18,7 +17,8 @@ if __name__ == '__main__':
     second_month_sheet_name = ArgumentHandler.get_sheet_name()
 
     # Read the first month data
-    first_month_df = FileEditor.read_excel_file(first_month_file_path, first_month_sheet_name) # sheet_name='Restricted'
+    first_month_df = FileEditor.read_excel_file(first_month_file_path,
+                                                first_month_sheet_name)  # sheet_name='Restricted'
     first_month_data = DataFilterer(first_month_df)
 
     # Read the second month data
