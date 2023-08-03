@@ -1,18 +1,8 @@
 import os
 import pandas as pd
-import tkinter as tk
-from tkinter import filedialog
 
 
 class FileEditor:
-
-    # Create a function to open a file dialog and return the selected file path
-    @staticmethod
-    def select_file(message):
-        root = tk.Tk()
-        root.withdraw()  # Hide the main window
-        file_path = filedialog.askopenfilename(title=message)  # Open the file dialog and get the selected file path
-        return file_path
 
     @staticmethod
     def read_excel_file(file_path, sheet_name):

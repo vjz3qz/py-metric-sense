@@ -1,4 +1,21 @@
+import tkinter as tk
+from tkinter import filedialog
+import sys
+
+
 class ArgumentHandler:
+
+    # Create a function to open a file dialog and return the selected file path
+    @staticmethod
+    def select_file(message):
+        root = tk.Tk()
+        root.withdraw()  # Hide the main window
+        file_path = filedialog.askopenfilename(title=message)  # Open the file dialog and get the selected file path
+        if not file_path:
+            print("Error: No file selected. Exiting.")
+            sys.exit(1)
+        return file_path
+
     @staticmethod
     def get_filter_type():
         print("Please select a filter type:")

@@ -8,10 +8,10 @@ from utils.file_editor import FileEditor
 
 
 if __name__ == '__main__':
-
+    print("Welcome to the Py_Metric_Sense!")
     # Get the file paths
-    first_month_file_path = FileEditor.select_file("Select the Excel file for the first month")
-    second_month_file_path = FileEditor.select_file("Select the Excel file for the second month")
+    first_month_file_path = ArgumentHandler.select_file("Select the Excel file for the first month")
+    second_month_file_path = ArgumentHandler.select_file("Select the Excel file for the second month")
 
     # Get the sheet names
     first_month_sheet_name = ArgumentHandler.get_sheet_name()
