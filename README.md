@@ -41,12 +41,11 @@ When executed, Py_Metric_Sense will prompt you to select 2 Excel files from your
 ## Next Steps
 
 1. Refine comparison logic.
-2. Implement additional data filters.
-3. Integrate comprehensive error handling.
-4. Develop more options for data comparison.
-5. Expand support for comparison of more than two files.
+2. Integrate comprehensive error handling.
+3. Visualize the comparison results using Matplotlib, seaborn, or Tableau.
+4. Log the comparison results in an Excel sheet.
 
-6. Write a script to visualize data with Tableau.
-7. Integrate a machine learning model for analysing the source of differences.
-8. Connect the tool to Tableau for enhanced data visualization.
-9. Broaden support for different data types.
+5. Develop more options for data comparison.
+6. Expand support for comparison of more than two files.
+7. Automate the process of generating the comparison results with a Bash script.
+8. Log errors and exceptions.

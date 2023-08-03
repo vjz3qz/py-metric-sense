@@ -35,6 +35,13 @@ def main():
     # Write the filtered data to an Excel file
     FileEditor.write_to_excel_file(second_month_data.data_frame, 'filtered_data.xlsx')
 
+    fields_to_compare = ['NFR_10', 'Deployment_Lifecycle_Phase', 'Asset_Type', 'PPI_Classification',
+                         'Information_Classification', 'Cash_Payment_Systems']
+    changes = DataComparator.compare_fields(fields_to_compare)
+    for field, change_dict in changes.items():
+        for (prev_value, curr_value), ci_ids in change_dict.items():
+            print(f"For field '{field}', the value changed from '{prev_value}' to '{curr_value}' for CI_IDs: {ci_ids}")
+
     # Compare the data
     data_comparator = DataComparator(first_month_data, second_month_data)
     print(data_comparator.count_ci_id())
