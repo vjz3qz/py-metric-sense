@@ -33,19 +33,33 @@ def main():
     second_month_data.apply_filter(filter_option)
 
     # Write the filtered data to an Excel file
-    FileEditor.write_to_excel_file(first_month_data.get_data_frame(), 'first_month_data.xlsx')
-    FileEditor.write_to_excel_file(second_month_data.get_data_frame(), 'second_month_data.xlsx')
-
-    fields_to_compare = ['NFR_10', 'Deployment_Lifecycle_Phase', 'Asset_Type', 'PPI_Classification',
-                         'Information_Classification', 'Cash_Payment_Systems']
-    changes = DataComparator.compare_fields(fields_to_compare)
-    for field, change_dict in changes.items():
-        for (prev_value, curr_value), ci_ids in change_dict.items():
-            print(f"For field '{field}', the value changed from '{prev_value}' to '{curr_value}' for CI_IDs: {ci_ids}")
+    if ArgumentHandler.get_print_status():
+        FileEditor.write_to_excel_file(first_month_data.get_data_frame(), 'first_month_data.xlsx')
+        FileEditor.write_to_excel_file(second_month_data.get_data_frame(), 'second_month_data.xlsx')
 
     # Compare the data
     data_comparator = DataComparator(first_month_data, second_month_data)
-    print(data_comparator.count_ci_id())
+
+    print("-----------------------------------")
+    prev, curr, diff = data_comparator.count_ci_id()
+    print("CI_IDs Comparison:")
+    print(f"Number of CI_IDs in the first month: {prev}")
+    print(f"Number of CI_IDs in the second month: {curr}")
+    print(f"Number of CI_IDs that are different: {diff}")
+    print("-----------------------------------")
+    changes2 = data_comparator.compare_fields2()
+    print("Field Comparison:")
+    for field, change_dict in changes2.items():
+        for (prev_value, curr_value), ci_ids in change_dict.items():
+            print(f"For field '{field}', the value changed from '{prev_value}' to '{curr_value}' for CI_IDs: {ci_ids}")
+
+    print("-----------------------------------")
+    changes = data_comparator.compare_fields()
+    print("Application Comparison:")
+    for ci_id, ci_id_changes in changes.items():
+        print(f"CI_ID: {ci_id}")
+        for field, (prev_value, curr_value) in ci_id_changes.items():
+            print(f"For field '{field}', the value changed from '{prev_value}' to '{curr_value}'")
 
     # Publish the filtered data to Tableau Server
     # publish_to_tableau_server(filtered_data_file_path, 'PROJECT_ID', 'FilteredData')

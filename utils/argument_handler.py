@@ -17,7 +17,7 @@ class ArgumentHandler:
         return file_path
 
     @staticmethod
-    def get_filter_type():
+    def get_filter_type(): # change these to actual names
         print("Please select a filter type:")
         print("1. Restricted")
         print("2. Cash Payment")
@@ -41,3 +41,14 @@ class ArgumentHandler:
                 return sheet_name
             else:
                 print("Error: Sheet name cannot be empty.")
+
+    @staticmethod
+    def get_print_status():
+        while True:
+            yes_or_no = input("Do you want to export the data to Excel sheets? (y/n): ")
+            if yes_or_no.lower() == 'y':
+                return True
+            elif yes_or_no.lower() == 'n':
+                return False
+            else:
+                print("Error: Invalid input. Please try again.")
